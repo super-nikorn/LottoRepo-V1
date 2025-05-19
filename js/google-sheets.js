@@ -1,21 +1,22 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxFw1a2PQ3MKV24Zwvfv2glGL8neVtvmdGZBJjMTeG6J9gxW9An2yyUQ3B3I7AXamOa2w/exec';
+// ในไฟล์ google-sheets.js
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwTS5eOS2SrjGF56jRg3RB_CIylJqhXkPITFXSMYrzWHQkD0aOdlxl73F6gDWReH_peWg/exec';
 
 async function saveData(sheetName, data) {
   try {
-    const response = await fetch(scriptURL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        sheet: sheetName,
-        data: data
-      })
+    // ใช้เทคนิค JSONP แทน fetch
+    return new Promise((resolve) => {
+      const callbackName = `jsonp_${Date.now()}`;
+      window[callbackName] = (response) => {
+        resolve(response);
+        delete window[callbackName];
+      };
+      
+      const script = document.createElement('script');
+      script.src = `${scriptURL}?sheet=${encodeURIComponent(sheetName)}&data=${encodeURIComponent(JSON.stringify(data))}&callback=${callbackName}`;
+      document.body.appendChild(script);
     });
-    
-    return await response.json();
   } catch (error) {
-    console.error('Error saving data:', error);
-    return { success: false, error: error.message };
+    console.error('Error:', error);
+    return { success: false };
   }
 }
