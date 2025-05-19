@@ -4,7 +4,6 @@ async function saveData(sheetName, data) {
   try {
     const response = await fetch(scriptURL, {
       method: 'POST',
-      mode: 'no-cors', // เพิ่มบรรทัดนี้
       headers: {
         'Content-Type': 'application/json',
       },
@@ -14,11 +13,9 @@ async function saveData(sheetName, data) {
       })
     });
     
-    // เนื่องจากใช้ no-cors เราจะไม่สามารถอ่าน response ได้
-    // ให้ถือว่าสำเร็จถ้าไม่เกิด error
-    return { success: true };
+    return await response.json();
   } catch (error) {
     console.error('Error saving data:', error);
-    return { success: false };
+    return { success: false, error: error.message };
   }
 }
