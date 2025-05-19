@@ -36,6 +36,6 @@ async function saveData(sheetName, data) {
 // ฟังก์ชันสำหรับตรวจสอบการ Login
 async function checkLogin(username, password) {
     const users = await fetchData('dataLogin');
-    const user = users.find(u => u.user === username && u.password === password);
+    const user = users.find(u => u.User === username && u.Password === password);
     return user ? true : false;
 }
