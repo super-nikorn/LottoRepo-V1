@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyRv-ihZdsstyvkiUIkeUp5ABw-_8yJkibyks6rQtVVvRPDgGKq3vO0Mkho7kBMS3lRbA/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxFw1a2PQ3MKV24Zwvfv2glGL8neVtvmdGZBJjMTeG6J9gxW9An2yyUQ3B3I7AXamOa2w/exec';
 
 async function saveData(sheetName, data) {
   try {
