@@ -1,11 +1,21 @@
+// ฟังก์ชันตรวจสอบ Login ใหม่ (ไม่ใช้ Google Sheets)
+function checkLogin(username, password) {
+    // ใช้รหัสผ่านแบบตายตัว
+    const hardcodedUsers = [
+        { user: 'admin', password: '1234' }
+    ];
+    
+    return hardcodedUsers.some(u => u.user === username && u.password === password);
+}
+
 // ตรวจสอบการ Login
-document.getElementById('loginForm')?.addEventListener('submit', async function(e) {
+document.getElementById('loginForm')?.addEventListener('submit', function(e) {
     e.preventDefault();
     
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     
-    const isValid = await checkLogin(username, password);
+    const isValid = checkLogin(username, password);
     
     if (isValid) {
         localStorage.setItem('isLoggedIn', 'true');
