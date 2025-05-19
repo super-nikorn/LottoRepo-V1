@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LottoKit - หน้าหลัก</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">LottoKit</div>
+        <ul class="navbar-nav">
+            <li><a href="home.html" class="active">หน้าหลัก</a></li>
+            <li><a href="add_ticket.html">เพิ่มโพยหวย</a></li>
+            <li><a href="#">ตั้งค่าระบบ</a></li>
+            <li><a href="#">ออกจากระบบ</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h2>สรุปข้อมูลโพยหวย</h2>
+            <div class="date-filter">
+                <input type="date" id="startDate">
+                <span>ถึง</span>
+                <input type="date" id="endDate">
+                <button class="btn" id="filterBtn">แสดงข้อมูล</button>
+                <button class="btn btn-primary" id="todayBtn">ข้อมูลวันนี้</button>
+            </div>
+        </div>
+
+        <div class="summary-cards">
+            <div class="card">
+                <h3>ยอดซื้อทั้งหมด</h3>
+                <p id="totalAmount">0 บาท</p>
+            </div>
+            <div class="card">
+                <h3>จำนวนโพยทั้งหมด</h3>
+                <p id="totalTickets">0 ใบ</p>
+            </div>
+            <div class="card">
+                <h3>ตัวเลขยอดนิยม</h3>
+                <p id="popularNumber">-</p>
+            </div>
+        </div>
+
+        <div class="ticket-list">
+            <h3>รายการโพยล่าสุด</h3>
+            <table id="ticketTable">
+                <thead>
+                    <tr>
+                        <th>วันที่</th>
+                        <th>ชื่อผู้ซื้อ</th>
+                        <th>หมายเลข</th>
+                        <th>ประเภท</th>
+                        <th>จำนวนเงิน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ข้อมูลจะถูกเพิ่มโดย JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/google-sheets.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
